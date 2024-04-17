@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Login } from "../Login/Login";
 import { Home } from "../Home/Home";
-import { Artists } from "../Artists/Artists";
+import { Characters } from "../Characters/Characters";
 import { Register } from "../Register/Register";
 import { Profile } from "../Profile/Profile";
 
@@ -14,7 +14,7 @@ export const Body = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/artists" element={<Artists />} />
+        <Route path="/characters" element={<Characters />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </>

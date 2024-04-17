@@ -48,28 +48,30 @@ export const Register = () => {
     <div className="register-container registerElementsDesign">
       {msg === "" ? (
         <>
+          <h1 className="title">CREA UNA CUENTA</h1>
+          <h2 className="description">¿Eres nuevo? Regístrate y reserva tu cita.</h2>
           <CustomInput
             typeProp={"text"}
             nameProp={"name"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"escribe tu nombre"}
+            placeholderProp={"Tu nombre"}
           />
           <CustomInput
             typeProp={"email"}
             nameProp={"email"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"escribe tu e-mail"}
+            placeholderProp={"Tu email"}
           />
 
           <CustomInput
             typeProp={"password"}
             nameProp={"password"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"escribe el password"}
+            placeholderProp={"Tu contraseña"}
           />
 
           <ButtonC
-            title={"register!"}
+            title={"REGISTRARME"}
             className={"regularButtonClass"}
             functionEmit={registerMe}
           />

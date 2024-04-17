@@ -1,0 +1,17 @@
+.character-card {
+    display: flex;
+    flex-direction: wrap;
+    height: 10em;
+    width: 8em;
+    margin-top: 1em;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    font-size: large;
+}
+
+.character-card:hover {
+    transition-duration: 1s;
+    transform:scale(1.25);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}

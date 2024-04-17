@@ -38,15 +38,15 @@ export const updateProfile = async (data, token) => {
   return res
 }
 
-export const bringAllArtists = async () => {
-  const res = await axios.get(`${API_RM_URL}/artists` /*headers*/);
+export const bringAllCharacters = async () => {
+  const res = await axios.get(`${API_RM_URL}/character` /*headers*/);
 
   return res.data.results;
 };
 
-export const bringArtistById = async (id) => {
+export const bringCharacterById = async (id) => {
   // puedo preparar la información para enviar al servidor
-  const res = await axios.get(`${API_RM_URL}/artists/${id}`);
+  const res = await axios.get(`${API_RM_URL}/character/${id}`);
 
   return res.data;
 };

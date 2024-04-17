@@ -6,7 +6,7 @@ import { decodeToken } from "react-jwt";
 import "./Login.css";
 import { loginCall } from "../../services/apiCalls";
 import { useDispatch } from "react-redux";
-import { login } from "../userSlice";
+import { login } from "../../app/slices/userSlice";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -62,21 +62,23 @@ export const Login = () => {
     <div className="login-container loginElementsDesign">
       {msg === "" ? (
         <>
+          <h1 className="title">MI CUENTA</h1>
+          <h2 className="description">¿Ya estás registrado? Entra y consulta tus citas.</h2>
           <CustomInput
             typeProp={"email"}
             nameProp={"email"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"escribe tu e-mail"}
+            placeholderProp={"Tu email"}
           />
           <CustomInput
             typeProp={"password"}
             nameProp={"password"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"escribe el password"}
+            placeholderProp={"Tu contraseña"}
           />
 
           <ButtonC
-            title={"log me!"}
+            title={"ENTRAR"}
             className={"regularButtonClass"}
             functionEmit={loginMe}
           />

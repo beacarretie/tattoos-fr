@@ -1,11 +1,11 @@
 .regularButtonClass {
-    height: 2em;
+    height: 3em;
     width: 20em;
 
-    background-color: red;
+    background-color: #B22A95;
     color: white;
 
-    border-radius: 1em;
+    border-radius: 0em;
 
     transition: 0.3s;
 
@@ -19,6 +19,6 @@
 .regularButtonClass:hover {
 
     cursor: pointer;
-    background-color: darkred;
+    background-color: #861d6f;
     transition: 0.3s;
 }
