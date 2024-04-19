@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CustomInput } from "../../components/CustomInput/CustomInput";
 import { bringProfile } from "../../services/apiCalls";
-import { inputValidator } from "../../utils/validators";
+import { IsInputError } from "../../utils/validators";
 import BootstrapModal from "../../components/BootstrapModal/BootstrapModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getLoggedAmount, getUserData } from "../../app/slices/userSlice";
@@ -39,8 +39,8 @@ export const Profile = () => {
 
   const updateProfileHandler = () => {
     if (
-      !inputValidator(profileData.name, "name") ||
-      !inputValidator(profileData.email, "email")
+      !IsInputError(profileData.name, "name") ||
+      !IsInputError(profileData.email, "email")
     ) {
       console.log("nombre o email no válidos");
       setErrorMessage("No se pueden actualizar los datos");

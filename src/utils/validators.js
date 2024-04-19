@@ -1,14 +1,18 @@
 
-export const inputValidator = (input, field) => {
-    if (input === "") {
-        return false
+// la función recibe el valor de un input junto con su nombre, y devuelve un mensaje de error correspondiente al tipo de input
+// si la comprobación falla, o un mensaje vacío si la comprobación tiene éxito
+export const IsInputError = (inputValue, inputName) => {
+    console.log(inputValue, inputName)
+        
+        if (inputValue === "") {
+        return "este campo es obligatorio"
     }
-    if ((field === "name" || field === "lastname") && typeof(input) === "string") {
-        return true
+    if (inputName === "password" && (inputValue.length <= 6 || inputValue.length >= 12)) {
+        return "la contraseña debe tener de 6 a 12 caracteres"
     }
-    if (field === "password" && typeof(input) === "string" && input.length >= 6 && input.length <= 12) {
-        return true
+    if (inputName === "email" && (!inputValue.includes("@") || !inputValue.includes("."))) {
+        return "introduce un email válido"
     }
 
-    return false
+    return ""
 }

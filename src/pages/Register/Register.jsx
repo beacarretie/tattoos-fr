@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { decodeToken } from "react-jwt";
 import { registerNewUserCall } from "../../services/apiCalls";
 import "./Register.css";
-import { inputValidator } from "../../utils/validators";
+import { IsInputError } from "../../utils/validators";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export const Register = () => {
   };
 
   const registerMe = async () => {
-    if (inputValidator(credentials.name, "name") && inputValidator(credentials.password, "password")) {
+    if (!IsInputError(credentials.password, "password") && !IsInputError(credentials.email, "email")) {
       const answer = await registerNewUserCall(credentials);
       console.log(answer)
       setMsg(answer.data.message);
