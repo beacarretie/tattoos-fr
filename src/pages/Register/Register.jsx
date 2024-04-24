@@ -12,7 +12,7 @@ export const Register = () => {
 
   const [credentials, setCredentials] = useState({
     email: "",
-    name: "",
+    firstName: "",
     password: "",
   });
 
@@ -35,11 +35,12 @@ export const Register = () => {
 
       if (answer.data.email) {
         setTimeout(() => {
-          navigate("/login");
+          navigate("/profile");
         }, 2000);
       }
     }
     else {
+      console.log(credentials)
       console.log("credenciales incorrectas, algún campo no está bien introducido")
     }
   };
@@ -49,25 +50,25 @@ export const Register = () => {
       {msg === "" ? (
         <>
           <h1 className="title">CREA UNA CUENTA</h1>
-          <h2 className="description">¿Eres nuevo? Regístrate y reserva tu cita.</h2>
+          <h2 className="description">¿Eres nuevo? Regístrate y reserva tu primera cita.</h2>
           <CustomInput
             typeProp={"text"}
-            nameProp={"name"}
+            nameProp={"firstName"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"Tu nombre"}
+            placeholderProp={"Tu nombre*"}
           />
           <CustomInput
             typeProp={"email"}
             nameProp={"email"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"Tu email"}
+            placeholderProp={"Tu email*"}
           />
 
           <CustomInput
             typeProp={"password"}
             nameProp={"password"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"Tu contraseña"}
+            placeholderProp={"Tu contraseña*"}
           />
 
           <ButtonC

@@ -19,10 +19,11 @@ export const Login = () => {
   // useState que lleva la cuenta del formato de los inputs y si el contenido es válido
   const [isValidContent, setIsValidContent] = useState({
     email: "",
-    password: ""
+    password: "",
   });
+  const [loginError, setLoginError] = useState("")
   const [msg, setMsg] = useState("");
-
+  
   // el Login necesita guardar el token en el almacén de redux, así que necesita poder hacer uso
   // del modo escritura. Instanciamos el dispatch
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ export const Login = () => {
   };
 
   const loginMe = async () => {
+    try {
     //esta será la función que desencadenará el login...
     const answer = await loginCall(credentials);
     if (answer.data.token) {
@@ -63,16 +65,25 @@ export const Login = () => {
       // dentro de la función "login" de userSlice, ese passport se recibe a través del action.payload
       dispatch(login(passport));
 
-      console.log(passport);
+      console.log(passport,uDecodificado,answer.data);
       //Guardaríamos passport bien en RDX o session/localStorage si no disponemos del primero
       sessionStorage.setItem("passport", JSON.stringify(passport));
 
-      setMsg(`${uDecodificado.name}, bienvenid@ de nuevo.`);
+      setMsg(`${uDecodificado.firstName}, bienvenid@ de nuevo.`);
 
       setTimeout(() => {
         navigate("/profile");
       }, 3000);
     }
+  } catch (error) {
+    console.log(error);
+    if (error.code === "ERR_NETWORK") {
+      setLoginError("el servidor está caído")
+    }
+    else {
+      setLoginError(error.response.data.error)
+    }
+  }
   };
 
   return (
@@ -86,7 +97,7 @@ export const Login = () => {
             typeProp={"email"}
             nameProp={"email"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"escribe tu e-mail"}
+            placeholderProp={"Tu email"}
 
             // función que se dispara al clickar fuera del input y valida el contenido
             onBlurHandler={(e) => IsInputErrorHandler(e)}
@@ -97,20 +108,20 @@ export const Login = () => {
             typeProp={"password"}
             nameProp={"password"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"escribe el password"}
+            placeholderProp={"Tu contraseña"}
             onBlurHandler={(e) => IsInputErrorHandler(e)}
             errorText={isValidContent.password}
           />
           <ButtonC
-            title={"log me!"}
+            title={"ENTRAR"}
             className={"regularButtonClass"}
             functionEmit={loginMe}
           />
+          <h2>{loginError}</h2>
         </>
       ) : (
         <div>{msg}</div>
       )}
-      <pre>{JSON.stringify(credentials, null, 2)}</pre>
     </div>
   );
 };

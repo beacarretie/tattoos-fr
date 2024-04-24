@@ -8,8 +8,11 @@ import { getLoggedAmount, getUserData } from "../../app/slices/userSlice";
 
 export const Profile = () => {
   const [profileData, setProfileData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    phone: "",
+    password: "",
     role: "",
   });
 
@@ -39,7 +42,7 @@ export const Profile = () => {
 
   const updateProfileHandler = () => {
     if (
-      !IsInputError(profileData.name, "name") ||
+      !IsInputError(profileData.firstName, "name") ||
       !IsInputError(profileData.email, "email")
     ) {
       console.log("nombre o email no válidos");
@@ -61,9 +64,17 @@ export const Profile = () => {
     <>
       <CustomInput
         typeProp="text"
-        nameProp="name"
-        placeholderProp="name"
-        value={profileData.name}
+        nameProp="First name"
+        placeholderProp="first name"
+        value={profileData.firstName}
+        isDisabled={!isEditing}
+        handlerProp={inputHandler}
+      />
+      <CustomInput
+        typeProp="text"
+        nameProp="Last name"
+        placeholderProp="last name"
+        value={profileData.lastName}
         isDisabled={!isEditing}
         handlerProp={inputHandler}
       />
@@ -76,10 +87,26 @@ export const Profile = () => {
         handlerProp={inputHandler}
       />
       <CustomInput
+        typeProp="phone"
+        nameProp="phone"
+        placeholderProp="phone"
+        value={profileData.phone}
+        isDisabled={!isEditing}
+        handlerProp={inputHandler}
+      />
+       <CustomInput
+        typeProp="password"
+        nameProp="password"
+        placeholderProp="*****"
+        value={profileData.password}
+        isDisabled={!isEditing}
+        handlerProp={inputHandler}
+      />
+      <CustomInput
         typeProp="text"
         nameProp="role"
         placeholderProp="role"
-        value={profileData.role}
+        value={profileData.role.name}
         isDisabled="disabled"
         handlerProp={inputHandler}
       />
@@ -90,7 +117,6 @@ export const Profile = () => {
         </div>
       ) : (
         <>
-          <button onClick={() => resetLoggedCount()}>Modificar</button>
           <BootstrapModal 
           profileData={profileData}
           inputHandler={inputHandler}

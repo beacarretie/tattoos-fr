@@ -13,10 +13,10 @@ function BootstrapModal({ profileData, inputHandler, token }) {
   const handleClose = () => {
     // doble navigate para forzar a recargar el perfil en caso de no querer actualizar los datos,
     // para que llame de nuevo a la API y los recupere.
-    navigate("/");
-    setTimeout(() => {
-      navigate("/profile");
-    });
+    //navigate("/");
+    //  setTimeout(() => {
+    //   navigate("/profile");
+    //});
 
     console.log("close");
     setShow(false);
@@ -46,17 +46,33 @@ function BootstrapModal({ profileData, inputHandler, token }) {
         <Modal.Body>
           <CustomInput
             typeProp="text"
-            nameProp="name"
-            placeholderProp="name"
-            value={profileData.name}
+            nameProp="firstName"
+            placeholderProp="first name"
+            value={profileData.firstName}
             isDisabled=""
             handlerProp={inputHandler}
           />
+        <CustomInput
+            typeProp="text"
+            nameProp="lastName"
+            placeholderProp="last name"
+            value={profileData.lastName}
+            isDisabled=""
+            handlerProp={inputHandler}
+        />
           <CustomInput
             typeProp="email"
             nameProp="email"
             placeholderProp="email"
             value={profileData.email}
+            isDisabled="disabled"
+            handlerProp={inputHandler}
+          />
+          <CustomInput
+            typeProp="phone"
+            nameProp="phone"
+            placeholderProp="phone"
+            value={profileData.phone}
             isDisabled=""
             handlerProp={inputHandler}
           />
@@ -64,7 +80,7 @@ function BootstrapModal({ profileData, inputHandler, token }) {
             typeProp="text"
             nameProp="role"
             placeholderProp="role"
-            value={profileData.role}
+            value={profileData.role.name}
             isDisabled="disabled"
             handlerProp={inputHandler}
           />
