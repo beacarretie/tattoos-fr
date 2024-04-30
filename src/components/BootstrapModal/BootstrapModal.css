@@ -1,11 +1,11 @@
 .regularButtonClass {
     height: 3em;
-    width: 20em;
+    width: 10em;
 
     background-color: #B22A95;
     color: white;
 
-    border-radius: 0em;
+    border: none;
 
     transition: 0.3s;
 
@@ -14,6 +14,9 @@
     align-items: center;
 
     margin: 1em;
+
+    align-items: center;
+
 }
 
 .regularButtonClass:hover {

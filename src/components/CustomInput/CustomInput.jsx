@@ -15,7 +15,7 @@ export const CustomInput = ({
       type={typeProp}
       name={nameProp}
       placeholder={placeholderProp}
-      value={value}
+      value={value || "" }
       disabled={isDisabled}
       onChange={(e) => handlerProp(e)}
     />

@@ -1,11 +1,15 @@
-.registerElementsDesign {
+
+body {
+    display: flex;
+ }
+ 
+ .profileElementsDesign {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
     align-items: center;
 }
-
-.title {
+ .title {
     font-size: medium;
     margin-top: 20px;
     margin-bottom: 10px;

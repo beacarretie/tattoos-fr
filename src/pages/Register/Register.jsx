@@ -6,6 +6,8 @@ import { decodeToken } from "react-jwt";
 import { registerNewUserCall } from "../../services/apiCalls";
 import "./Register.css";
 import { IsInputError } from "../../utils/validators";
+import Header from "../../components/Header/Header";
+
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -46,7 +48,7 @@ export const Register = () => {
   };
 
   return (
-    <div className="register-container registerElementsDesign">
+    <><Header /><div className="registerElementsDesign">
       {msg === "" ? (
         <>
           <h1 className="title">CREA UNA CUENTA</h1>
@@ -55,32 +57,28 @@ export const Register = () => {
             typeProp={"text"}
             nameProp={"firstName"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"Tu nombre*"}
-          />
+            placeholderProp={"Tu nombre*"} />
           <CustomInput
             typeProp={"email"}
             nameProp={"email"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"Tu email*"}
-          />
+            placeholderProp={"Tu email*"} />
 
           <CustomInput
             typeProp={"password"}
             nameProp={"password"}
             handlerProp={(e) => inputHandler(e)}
-            placeholderProp={"Tu contraseña*"}
-          />
+            placeholderProp={"Tu contraseña*"} />
 
           <ButtonC
             title={"REGISTRARME"}
             className={"regularButtonClass"}
-            functionEmit={registerMe}
-          />
+            functionEmit={registerMe} />
         </>
       ) : (
         <div>{msg}</div>
       )}
       {/* <pre>{JSON.stringify(credentials, null, 2)}</pre> */}
-    </div>
+    </div></>
   );
 };

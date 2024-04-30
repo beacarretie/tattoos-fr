@@ -5,6 +5,8 @@ import { IsInputError } from "../../utils/validators";
 import BootstrapModal from "../../components/BootstrapModal/BootstrapModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getLoggedAmount, getUserData } from "../../app/slices/userSlice";
+import "./Profile.css";
+import Header from "../../components/Header/Header";
 
 export const Profile = () => {
   const [profileData, setProfileData] = useState({
@@ -61,68 +63,59 @@ export const Profile = () => {
   }
 
   return (
-    <>
-      <CustomInput
-        typeProp="text"
-        nameProp="First name"
-        placeholderProp="first name"
-        value={profileData.firstName}
-        isDisabled={!isEditing}
-        handlerProp={inputHandler}
-      />
-      <CustomInput
-        typeProp="text"
-        nameProp="Last name"
-        placeholderProp="last name"
-        value={profileData.lastName}
-        isDisabled={!isEditing}
-        handlerProp={inputHandler}
-      />
-      <CustomInput
-        typeProp="email"
-        nameProp="email"
-        placeholderProp="email"
-        value={profileData.email}
-        isDisabled={!isEditing}
-        handlerProp={inputHandler}
-      />
-      <CustomInput
-        typeProp="phone"
-        nameProp="phone"
-        placeholderProp="phone"
-        value={profileData.phone}
-        isDisabled={!isEditing}
-        handlerProp={inputHandler}
-      />
-       <CustomInput
-        typeProp="password"
-        nameProp="password"
-        placeholderProp="*****"
-        value={profileData.password}
-        isDisabled={!isEditing}
-        handlerProp={inputHandler}
-      />
-      <CustomInput
-        typeProp="text"
-        nameProp="role"
-        placeholderProp="role"
-        value={profileData.role.name}
-        isDisabled="disabled"
-        handlerProp={inputHandler}
-      />
-      {isEditing ? (
-        <div className="button-container">
-          <button onClick={() => updateProfileHandler()}>Guardar</button>
-          <button onClick={() => setIsEditing(false)}>Cancelar</button>
-        </div>
-      ) : (
+  <><Header /><div className="profileElementsDesign">
+      <>
+        <h1 className="title">MIS DATOS PERSONALES</h1>
+        <h2 className="description">Desde aquí podrás actualizar siempre tus datos.</h2>
+        <CustomInput
+          typeProp="text"
+          nameProp="firstName"
+          placeholderProp="first name"
+          value={profileData.firstName}
+          isDisabled={!isEditing}
+          handlerProp={inputHandler} />
+        <CustomInput
+          typeProp="text"
+          nameProp="lastName"
+          placeholderProp="last name"
+          value={profileData.lastName}
+          isDisabled={!isEditing}
+          handlerProp={inputHandler} />
+        <CustomInput
+          typeProp="email"
+          nameProp="email"
+          placeholderProp="email"
+          value={profileData.email}
+          isDisabled={!isEditing}
+          handlerProp={inputHandler} />
+        <CustomInput
+          typeProp="phone"
+          nameProp="phone"
+          placeholderProp="phone"
+          value={profileData.phone}
+          isDisabled={!isEditing}
+          handlerProp={inputHandler} />
+        <CustomInput
+          typeProp="password"
+          nameProp="password"
+          placeholderProp="*****"
+          value={profileData.password}
+          isDisabled={!isEditing}
+          handlerProp={inputHandler} />
+        <CustomInput
+          typeProp="text"
+          nameProp="role"
+          placeholderProp="role"
+          value={profileData.role.name}
+          isDisabled="disabled"
+          handlerProp={inputHandler} />
         <>
-          <BootstrapModal 
-          profileData={profileData}
-          inputHandler={inputHandler}
-          token={token}/>
+          <BootstrapModal
+            profileData={profileData}
+            inputHandler={inputHandler}
+            token={token} />
         </>
-      )}
-    </>
+      </>
+    </div></>
   );
 };

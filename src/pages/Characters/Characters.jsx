@@ -1,60 +1,50 @@
 import { useEffect, useState } from "react";
-import { bringAllCharacters,bringCharacterById,} from "../../services/apiCalls";
+import { bringAllCharacters, bringCharacterById, } from "../../services/apiCalls";
 import "./Characters.css";
-import { CharacterCard } from "../../components/CharacterCard/CharacterCard";
-import { CustomInput } from "../../components/CustomInput/CustomInput";
 import Avatar from 'react-avatar';
+import Header from "../../components/Header/Header";
+
 
 export const Characters = () => {
-  const [characters, setCharacters] = useState([]);
-  const [filteredCharacters, setFilteredCharacters] = useState([]);
-  const [filter, setFilter] = useState("");
-  const bringCharacters = /*async*/ () => {
-    // const apiResponse = await bringAllCharacters()
-    // lógica que me convenga usar
+	const [characters, setCharacters] = useState([]);
+	const bringCharacters = /*async*/ () => {
+		// const apiResponse = await bringAllCharacters()
+		// lógica que me convenga usar
 
-    bringAllCharacters()
-      .then((res) => {
-        console.log(res)
-        setCharacters(res);
-      })
-      .catch((error) => {
-        console.log(error, "ups");
-      });
-  };
+		bringAllCharacters()
+			.then((res) => {
+				setCharacters(res);
+			})
+			.catch((error) => {
+				console.log(error, "ups");
+			});
+	};
 
-  const characterCardClickHandler = (char) => {
-    bringCharacterById(char.id).then((res) => {
-      console.log(res);
-    });
-  };
+	useEffect(bringCharacters, [])
 
-  // handler del buscador de personajes
-  const filterHandler = (e) => {
-    setFilter(e.target.value);
-  };
+	return ( 
+	<><Header /><div className="charactersDesign">
+			<ol>
+				{characters.map((char) => {
+					return (
+						<>
+							<div className="cardCharacter">
+								<Avatar size={50} round="50px" name={char.user.firstName} />
+								<div className="contactDesign">
+									<div className="contactName">
+										<p className="firstName">{char.user.firstName}</p>
+									</div>
+									<div className="contactData">
+										<p className="phone">{char.user.phone}</p>
+										<p className="email">{char.user.email}</p>
+									</div>
+								</div>
+							</div>
+						</>
+					);
+				})}
 
-  useEffect(bringCharacters,[])
-
-  console.log("Filtered",filteredCharacters)
-  console.log("characters",characters)
-  return (
-    <div className="characters-design">
-      <ol>
-        
-        {characters.map((char) => {
-            return (
-              <>
-                <Avatar name={char.user.firstName}/>
-                <p>{char.user.firstName}</p>
-                <p>{char.user.phone}</p>
-                <p>{char.user.email}</p>
-              </>
-            );
-          })
-        }
-        
-      </ol>
-    </div>
-  );
+			</ol>
+		</div></>
+);
 };

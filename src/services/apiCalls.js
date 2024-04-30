@@ -5,7 +5,6 @@ const API_URL = "http://localhost:3000/api/";
 // const API_URL = "https://fsdonline2312tes.vercel.app/"
 
 export const registerNewUserCall = async (credentials) => {
-  console.log (credentials)
   return await axios.post(`${API_URL}users/create`, credentials);
 };
 
@@ -45,7 +44,7 @@ export const bringAllCharacters = async () => {
 
 export const bringCharacterById = async (id) => {
   // puedo preparar la información para enviar al servidor
-  const res = await axios.get(`${API_URL}/artists/${id}`);
+  const res = await axios.get(`${API_URL}artists/${id}`);
 
   return res.data;
 };
@@ -57,7 +56,7 @@ export const bringAllUsersCall = async (token) => {
     }
   }
 
-  return axios.get(`${API_URL}users/all`, config)
+  return axios.get(`${API_URL}users`, config)
 
 }
 

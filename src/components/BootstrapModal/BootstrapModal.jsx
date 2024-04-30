@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import { CustomInput } from "../CustomInput/CustomInput";
 import { updateProfile } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
+import "./BootstrapModal.css";
 
 function BootstrapModal({ profileData, inputHandler, token }) {
   const [show, setShow] = useState(false);
@@ -35,8 +36,8 @@ function BootstrapModal({ profileData, inputHandler, token }) {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShow(true)}>
-        Modificar
+      <Button className="regularButtonClass" variant="primary" onClick={() => setShow(true)}>
+        MODIFICAR
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -86,11 +87,11 @@ function BootstrapModal({ profileData, inputHandler, token }) {
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancelar
+          <Button className="regularButtonClass" variant="secondary" onClick={handleClose}>
+            CANCELAR
           </Button>
-          <Button variant="primary" onClick={handleUpdate}>
-            Guardar cambios
+          <Button className="regularButtonClass" variant="primary" onClick={handleUpdate}>
+            GUARDAR
           </Button>
         </Modal.Footer>
       </Modal>
